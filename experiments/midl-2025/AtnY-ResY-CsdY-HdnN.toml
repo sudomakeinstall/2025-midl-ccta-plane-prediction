@@ -1,0 +1,282 @@
+dir_trn = "/home/davis/datasets/CMP_Data/trn/"
+dir_val = "/home/davis/datasets/CMP_Data/val/"
+dir_tst = "/home/davis/datasets/CMP_Data/tst/"
+dir_output = "/home/davis/projects/midl-2025/AtnY-ResY-CsdY-HdnN/"
+exp_name = "Attention Residual Cascaded"
+img_file = "img-nii/img_MD.nii.gz"
+seg_file = "seg-nii/seg_MD_Corrected.nii.gz"
+ang_file = "euler.toml"
+quaternion_names = ["Base", "2CH", "3CH", "4CH", "SAX"]
+checkpoint_pretrain_file_name = "checkpoint-pretrain.pth.tar"
+checkpoint_last_file_name = "checkpoint-last.pth.tar"
+checkpoint_best_file_name = "checkpoint-best.pth.tar"
+dataframe_file_name = "data.csv"
+
+device = "cuda"
+num_workers = 0
+pin_memory = false
+
+seed = 9000
+epochs = 24
+
+channels = 1
+classes = 4
+orientation = "LAS"
+
+batch_size = 1
+
+air_hu = -990
+clip_min = -200
+clip_max = 600
+
+augmentation = true
+augmentation_noise_prob = 0.5
+augmentation_rotation_prob = 1.0
+
+normalization = "group"
+nonlinearity = "leaky_relu"
+pass_features = true
+transform = "rigid"
+hidden_layers = [ ]
+fc_frozen = false
+stop_after_coarse = false
+stop_after_fc = false
+
+checkpoint_best_metric = "fine_jd_avg"
+
+lr_initial = 0.0001
+lr_warmup = true
+lr_warmup_start_factor = 1e-2
+lr_warmup_total_iters = 2
+lr_strategy = "exponential"
+lr_exponential_gamma = 0.9
+clip_grad_norm = 10.0
+
+label_map_data = [[0, 0], [1, 1], [2, 2], [3, 3], [5, 0], [6, 0]]
+
+c2f_key = "Q_sax"
+
+# Coarse Losses
+
+[coarse_jd]
+
+weight = 1.0
+should_eval = true
+
+[coarse_dc]
+
+weight = 0.0
+should_eval = true
+
+[coarse_hf]
+
+weight = 0.0
+should_eval = false
+
+[coarse_cd]
+
+weight = 0.0
+should_eval = true
+
+# Fine Losses
+
+[fine_jd]
+
+weight = 1.0
+should_eval = true
+
+[fine_dc]
+
+weight = 0.0
+should_eval = true
+
+[fine_hf]
+
+weight = 0.0
+should_eval = false
+
+[unet_coarse]
+
+spacing = 3.0
+shape = [ 64, 64, 64 ]
+features = [ 32, 64, 128, 256 ]
+frozen = false
+attention = true
+residual = true
+
+[unet_fine]
+
+spacing = 0.8
+shape = [ 128, 128, 192 ]
+features = [ 40, 80, 160, 320 ]
+frozen = false
+attention = true
+residual = true
+
+[[quat_compositions]]
+
+name = "bln"
+indices = [0]
+[quat_compositions.mse]
+weight = 1.11111111111
+should_eval = true
+[quat_compositions.geodesic]
+weight = 0.0
+should_eval = true
+[quat_compositions.angle]
+weight = 0.0
+should_eval = true
+
+[[quat_compositions]]
+
+name = "bln_2_2ch"
+indices = [1]
+[quat_compositions.mse]
+weight = 1.11111111111
+should_eval = true
+[quat_compositions.geodesic]
+weight = 0.0
+should_eval = true
+[quat_compositions.angle]
+weight = 0.0
+should_eval = true
+
+[[quat_compositions]]
+
+name = "bln_2_3ch"
+indices = [2]
+[quat_compositions.mse]
+weight = 1.11111111111
+should_eval = true
+[quat_compositions.geodesic]
+weight = 0.0
+should_eval = true
+[quat_compositions.angle]
+weight = 0.0
+should_eval = true
+
+[[quat_compositions]]
+
+name = "bln_2_4ch"
+indices = [3]
+[quat_compositions.mse]
+weight = 1.11111111111
+should_eval = true
+[quat_compositions.geodesic]
+weight = 0.0
+should_eval = true
+[quat_compositions.angle]
+weight = 0.0
+should_eval = true
+
+[[quat_compositions]]
+
+name = "bln_2_sax"
+indices = [4]
+[quat_compositions.mse]
+weight = 1.11111111111
+should_eval = true
+[quat_compositions.geodesic]
+weight = 0.0
+should_eval = true
+[quat_compositions.angle]
+weight = 0.0
+should_eval = true
+
+[[quat_compositions]]
+
+name = "2ch"
+indices = [0, 1]
+[quat_compositions.mse]
+weight = 1.11111111111
+should_eval = true
+[quat_compositions.geodesic]
+weight = 0.0
+should_eval = true
+[quat_compositions.angle]
+weight = 0.0
+should_eval = true
+
+[[quat_compositions]]
+
+name = "3ch"
+indices = [0, 2]
+[quat_compositions.mse]
+weight = 1.11111111111
+should_eval = true
+[quat_compositions.geodesic]
+weight = 0.0
+should_eval = true
+[quat_compositions.angle]
+weight = 0.0
+should_eval = true
+
+[[quat_compositions]]
+
+name = "4ch"
+indices = [0, 3]
+[quat_compositions.mse]
+weight = 1.11111111111
+should_eval = true
+[quat_compositions.geodesic]
+weight = 0.0
+should_eval = true
+[quat_compositions.angle]
+weight = 0.0
+should_eval = true
+
+[[quat_compositions]]
+
+name = "sax"
+indices = [0, 4]
+[quat_compositions.mse]
+weight = 1.11111111111
+should_eval = true
+[quat_compositions.geodesic]
+weight = 0.0
+should_eval = true
+[quat_compositions.angle]
+weight = 0.0
+should_eval = true
+
+[[labels]]
+
+o = 0
+rgba = [0.0, 0.0, 0.0, 0.0]
+text = "Background"
+legend = true
+
+[[labels]]
+
+o = 1
+rgba = [1.0, 0.0, 0.0, 1.0]
+text = "Myocardium"
+legend = true
+
+[[labels]]
+
+o = 2
+rgba = [0.0, 1.0, 0.0, 1.0]
+text = "Bloodpool"
+legend = true
+
+[[labels]]
+
+o = 3
+rgba = [0.0, 0.0, 1.0, 1.0]
+text = "Trabeculations"
+legend = true
+#
+#[[labels]]
+#
+#o = 4
+#rgba = [1.0, 1.0, 0.0, 1.0]
+#text = "Mitral_Annulus"
+#legend = false
+#
+#[[labels]]
+#
+#o = 5
+#rgba = [1.0, 0.0, 1.0, 1.0]
+#text = "LVOT"
+#legend = false
