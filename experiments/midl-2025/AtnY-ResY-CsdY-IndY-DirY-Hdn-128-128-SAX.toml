@@ -1,12 +1,12 @@
 dir_trn = "/home/davis/datasets/CMP_Data/trn/"
 dir_val = "/home/davis/datasets/CMP_Data/val/"
 dir_tst = "/home/davis/datasets/CMP_Data/tst/"
-dir_output = "/home/davis/projects/midl-2025/AtnY-ResY-CsdY-Hdn-256-256/"
-exp_name = "Attention Residual Cascaded Hidden 256-256"
+dir_output = "/home/davis/projects/midl-2025/AtnY-ResY-CsdY-IndY-DirY-Hdn-128-128-SAX/"
+exp_name = "Attention Residual Cascaded Hidden 128-128"
 img_file = "img-nii/img_MD.nii.gz"
 seg_file = "seg-nii/seg_MD_Corrected.nii.gz"
 ang_file = "euler.toml"
-quaternion_names = ["Base", "2CH", "3CH", "4CH", "SAX"]
+quaternion_names = ["Base", "SAX"]
 checkpoint_pretrain_file_name = "checkpoint-pretrain.pth.tar"
 checkpoint_last_file_name = "checkpoint-last.pth.tar"
 checkpoint_best_file_name = "checkpoint-best.pth.tar"
@@ -37,7 +37,7 @@ normalization = "group"
 nonlinearity = "leaky_relu"
 pass_features = true
 transform = "rigid"
-hidden_layers = [ 256, 256 ]
+hidden_layers = [ 128, 128 ]
 fc_frozen = false
 stop_after_coarse = false
 stop_after_fc = false
@@ -118,49 +118,7 @@ residual = true
 name = "bln"
 indices = [0]
 [quat_compositions.mse]
-weight = 1.11111111111
-should_eval = true
-[quat_compositions.geodesic]
-weight = 0.0
-should_eval = true
-[quat_compositions.angle]
-weight = 0.0
-should_eval = true
-
-[[quat_compositions]]
-
-name = "bln_2_2ch"
-indices = [1]
-[quat_compositions.mse]
-weight = 1.11111111111
-should_eval = true
-[quat_compositions.geodesic]
-weight = 0.0
-should_eval = true
-[quat_compositions.angle]
-weight = 0.0
-should_eval = true
-
-[[quat_compositions]]
-
-name = "bln_2_3ch"
-indices = [2]
-[quat_compositions.mse]
-weight = 1.11111111111
-should_eval = true
-[quat_compositions.geodesic]
-weight = 0.0
-should_eval = true
-[quat_compositions.angle]
-weight = 0.0
-should_eval = true
-
-[[quat_compositions]]
-
-name = "bln_2_4ch"
-indices = [3]
-[quat_compositions.mse]
-weight = 1.11111111111
+weight = 3.33333333333
 should_eval = true
 [quat_compositions.geodesic]
 weight = 0.0
@@ -172,51 +130,9 @@ should_eval = true
 [[quat_compositions]]
 
 name = "bln_2_sax"
-indices = [4]
+indices = [1]
 [quat_compositions.mse]
-weight = 1.11111111111
-should_eval = true
-[quat_compositions.geodesic]
-weight = 0.0
-should_eval = true
-[quat_compositions.angle]
-weight = 0.0
-should_eval = true
-
-[[quat_compositions]]
-
-name = "2ch"
-indices = [0, 1]
-[quat_compositions.mse]
-weight = 1.11111111111
-should_eval = true
-[quat_compositions.geodesic]
-weight = 0.0
-should_eval = true
-[quat_compositions.angle]
-weight = 0.0
-should_eval = true
-
-[[quat_compositions]]
-
-name = "3ch"
-indices = [0, 2]
-[quat_compositions.mse]
-weight = 1.11111111111
-should_eval = true
-[quat_compositions.geodesic]
-weight = 0.0
-should_eval = true
-[quat_compositions.angle]
-weight = 0.0
-should_eval = true
-
-[[quat_compositions]]
-
-name = "4ch"
-indices = [0, 3]
-[quat_compositions.mse]
-weight = 1.11111111111
+weight = 3.33333333333
 should_eval = true
 [quat_compositions.geodesic]
 weight = 0.0
@@ -228,9 +144,9 @@ should_eval = true
 [[quat_compositions]]
 
 name = "sax"
-indices = [0, 4]
+indices = [0, 1]
 [quat_compositions.mse]
-weight = 1.11111111111
+weight = 3.33333333333
 should_eval = true
 [quat_compositions.geodesic]
 weight = 0.0

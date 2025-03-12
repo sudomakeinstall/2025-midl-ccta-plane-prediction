@@ -1,8 +1,8 @@
 dir_trn = "/home/davis/datasets/CMP_Data/trn/"
 dir_val = "/home/davis/datasets/CMP_Data/val/"
 dir_tst = "/home/davis/datasets/CMP_Data/tst/"
-dir_output = "/home/davis/projects/midl-2025/AtnY-ResY-CsdY-Hdn-128-128/"
-exp_name = "Attention Residual Cascaded Hidden 128-128"
+dir_output = "/home/davis/projects/midl-2025/AtnY-ResY-CsdN-IndY-DirY-Hdn-128-128/"
+exp_name = "Attention Residual Hdn 128-128"
 img_file = "img-nii/img_MD.nii.gz"
 seg_file = "seg-nii/seg_MD_Corrected.nii.gz"
 ang_file = "euler.toml"
@@ -35,7 +35,7 @@ augmentation_rotation_prob = 1.0
 
 normalization = "group"
 nonlinearity = "leaky_relu"
-pass_features = true
+pass_features = false
 transform = "rigid"
 hidden_layers = [ 128, 128 ]
 fc_frozen = false

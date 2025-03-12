@@ -1,8 +1,8 @@
 dir_trn = "/home/davis/datasets/CMP_Data/trn/"
 dir_val = "/home/davis/datasets/CMP_Data/val/"
 dir_tst = "/home/davis/datasets/CMP_Data/tst/"
-dir_output = "/home/davis/projects/midl-2025/AtnY-ResY-CsdY-HdnN/"
-exp_name = "Attention Residual Cascaded"
+dir_output = "/home/davis/projects/midl-2025/AtnY-ResN-CsdY-IndY-DirY-Hdn-128-128/"
+exp_name = "Attention Cascaded Hidden 128-128"
 img_file = "img-nii/img_MD.nii.gz"
 seg_file = "seg-nii/seg_MD_Corrected.nii.gz"
 ang_file = "euler.toml"
@@ -37,7 +37,7 @@ normalization = "group"
 nonlinearity = "leaky_relu"
 pass_features = true
 transform = "rigid"
-hidden_layers = [ ]
+hidden_layers = [ 128, 128 ]
 fc_frozen = false
 stop_after_coarse = false
 stop_after_fc = false
@@ -102,7 +102,7 @@ shape = [ 64, 64, 64 ]
 features = [ 32, 64, 128, 256 ]
 frozen = false
 attention = true
-residual = true
+residual = false
 
 [unet_fine]
 
@@ -111,7 +111,7 @@ shape = [ 128, 128, 192 ]
 features = [ 40, 80, 160, 320 ]
 frozen = false
 attention = true
-residual = true
+residual = false
 
 [[quat_compositions]]
 

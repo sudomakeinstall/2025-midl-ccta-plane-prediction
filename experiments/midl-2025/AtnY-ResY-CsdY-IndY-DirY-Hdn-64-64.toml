@@ -1,7 +1,7 @@
 dir_trn = "/home/davis/datasets/CMP_Data/trn/"
 dir_val = "/home/davis/datasets/CMP_Data/val/"
 dir_tst = "/home/davis/datasets/CMP_Data/tst/"
-dir_output = "/home/davis/projects/midl-2025/AtnY-ResY-CsdY-Hdn-64-64/"
+dir_output = "/home/davis/projects/midl-2025/AtnY-ResY-CsdY-IndY-DirY-Hdn-64-64/"
 exp_name = "Attention Residual Cascaded Hidden 64-64"
 img_file = "img-nii/img_MD.nii.gz"
 seg_file = "seg-nii/seg_MD_Corrected.nii.gz"

@@ -1,8 +1,8 @@
 dir_trn = "/home/davis/datasets/CMP_Data/trn/"
 dir_val = "/home/davis/datasets/CMP_Data/val/"
 dir_tst = "/home/davis/datasets/CMP_Data/tst/"
-dir_output = "/home/davis/projects/midl-2025/AtnY-ResY-CsdY-Hdn-128-128-TRANSFORM/"
-exp_name = "Attention Residual Cascaded Hidden 128-128 (TRANSFORM)"
+dir_output = "/home/davis/projects/midl-2025/AtnY-ResY-CsdY-IndY-DirY-HdnN/"
+exp_name = "Attention Residual Cascaded"
 img_file = "img-nii/img_MD.nii.gz"
 seg_file = "seg-nii/seg_MD_Corrected.nii.gz"
 ang_file = "euler.toml"
@@ -17,7 +17,7 @@ num_workers = 0
 pin_memory = false
 
 seed = 9000
-epochs = 16
+epochs = 24
 
 channels = 1
 classes = 4
@@ -37,12 +37,12 @@ normalization = "group"
 nonlinearity = "leaky_relu"
 pass_features = true
 transform = "rigid"
-hidden_layers = [ 128, 128 ]
+hidden_layers = [ ]
 fc_frozen = false
 stop_after_coarse = false
-stop_after_fc = true
+stop_after_fc = false
 
-checkpoint_best_metric = "quat_ms_sax"
+checkpoint_best_metric = "fine_jd_avg"
 
 lr_initial = 0.0001
 lr_warmup = true
@@ -60,7 +60,7 @@ c2f_key = "Q_sax"
 
 [coarse_jd]
 
-weight = 0.0
+weight = 1.0
 should_eval = true
 
 [coarse_dc]
@@ -82,13 +82,13 @@ should_eval = true
 
 [fine_jd]
 
-weight = 0.0
-should_eval = false
+weight = 1.0
+should_eval = true
 
 [fine_dc]
 
 weight = 0.0
-should_eval = false
+should_eval = true
 
 [fine_hf]
 
@@ -100,7 +100,7 @@ should_eval = false
 spacing = 3.0
 shape = [ 64, 64, 64 ]
 features = [ 32, 64, 128, 256 ]
-frozen = true
+frozen = false
 attention = true
 residual = true
 
@@ -109,7 +109,7 @@ residual = true
 spacing = 0.8
 shape = [ 128, 128, 192 ]
 features = [ 40, 80, 160, 320 ]
-frozen = true
+frozen = false
 attention = true
 residual = true
 
