@@ -1,0 +1,306 @@
+<svg width="312" height="100" viewBox="-126 -25 312 100" xmlns="http://www.w3.org/2000/svg" style="background-color:white">
+
+  <style>
+    .textMicro {
+      font: 4px arial;
+    }
+    .textSmall {
+      font: 6px arial;
+    }
+    .textFigure {
+      font: 1.5px arial;
+    }
+    .heavy {
+      font: bold 30px sans-serif;
+    }
+
+    /* Note that the color of the text is set with the    *
+     * fill property, the color property is for HTML only */
+    .Rrrrr {
+      font: italic 40px serif;
+      fill: red;
+    }
+  </style>
+
+  <defs>
+    <marker 
+      id='head' 
+      orient="auto" 
+      markerWidth='3' 
+      markerHeight='4' 
+      refX='0.1' 
+      refY='2'
+    >
+      <path d='M0,0 V4 L2,2 Z' fill="black" />
+    </marker>
+  </defs>
+
+  
+  <!-- Image -->
+  <symbol id="image" width="20" height="20" viewBox="-1 -0.4 1.4 1.2">
+    <rect x="-0.9" y="0" width="0.9" height="0.7" fill="#0F1035" />
+    <rect x="0" y="0" width="0.0909925" height="0.7" fill="#5A5C97" transform="skewY(-70)" />
+    <rect x="-0.9" y="-0.25" width="0.9" height="0.25" fill="#D2D3EB" transform="skewX(-20)" />
+  </symbol>
+
+  <!-- Segmentation -->
+  <symbol id="segCoarse" width="20" height="20" viewBox="-1 -0.4 1.4 1.2">
+    <rect x="-0.9" y="0" width="0.9" height="0.7" fill="#5F0F40" />
+    <rect x="0" y="0" width="0.0909925" height="0.7" fill="#992f70" transform="skewY(-70)" />
+    <rect x="-0.9" y="-0.25" width="0.9" height="0.25" fill="#efbfdd" transform="skewX(-20)" />
+  </symbol>
+
+  <!-- Resample -->
+  <symbol id="resample" width="10" height="10" viewBox="-1 -1 2 2">
+    <circle cx="0" cy="0" r="0.9" stroke="#0F1035" stroke-width="0.1" fill="none" />
+
+    <g id="dots">
+    <circle cx="-0.50" cy="0" r="0.1" fill="#0F1035"/>
+    <circle cx="-0.25" cy="0" r="0.1" fill="#0F1035"/>
+    <circle cx="-0.00" cy="0" r="0.1" fill="#0F1035"/>
+    <circle cx="+0.25" cy="0" r="0.1" fill="#0F1035"/>
+    <circle cx="+0.50" cy="0" r="0.1" fill="#0F1035"/>
+    </g>
+
+    <use href="#dots" x="0" y="-0.50" />
+    <use href="#dots" x="0" y="-0.25" />
+    <use href="#dots" x="0" y="+0.25" />
+    <use href="#dots" x="0" y="+0.50" />
+    
+  </symbol>
+
+  <!-- Quaternion -->
+  <symbol id="quaternion" width="10" height="10" viewBox="-1 -1 2 2">
+    <circle cx="0" cy="0" r="0.9" stroke="#0F1035" stroke-width="0.1" fill="none" />
+    <text x="-0.4" y="0.5" class="textFigure">θ</text>
+  </symbol>
+
+  <!-- Concatenate -->
+  <symbol id="cat" width="10" height="10" viewBox="-1 -1 2 2">
+    <circle cx="0" cy="0" r="0.9" stroke="#0F1035" stroke-width="0.1" fill="none" />
+    <line x1="-0.9" y1="+0.0" x2="+0.9" y2="+0.0" stroke="#0F1035" stroke-width="0.1" />
+    <line x1="+0.0" y1="-0.9" x2="+0.0" y2="+0.9" stroke="#0F1035" stroke-width="0.1" />
+  </symbol>
+
+  <symbol id="backbone" width="80" height="40" viewBox="0 -1 3.25 2">
+    <!-- Skips -->
+    <line x1="0.2" y1="-0.675" x2="3.0" y2="-0.675" stroke="#0F1035" stroke-width="0.03" />
+    <line x1="0.3" y1="-0.225" x2="2.8" y2="-0.225" stroke="#0F1035" stroke-width="0.03" />
+    <line x1="0.55" y1="+0.225" x2="2.4" y2="+0.225" stroke="#0F1035" stroke-width="0.03" />
+    <line x1="0.95" y1="+0.675" x2="2.0" y2="+0.675" stroke="#0F1035" stroke-width="0.03" />
+
+    <!-- Downs -->
+    <line x1="0.325" y1="-0.675" x2="0.325" y2="-0.3" stroke="#0F1035" stroke-width="0.03" />
+    <line x1="0.60" y1="-0.3" x2="0.6" y2="+0.2" stroke="#0F1035" stroke-width="0.03" />
+    <line x1="1.05" y1="+0.2" x2="1.05" y2="+0.6" stroke="#0F1035" stroke-width="0.03" />
+
+    <!-- Ups -->
+    <line x1="2.825" y1="-0.675" x2="2.825" y2="-0.3" stroke="#0F1035" stroke-width="0.03" />
+    <line x1="2.50" y1="-0.3" x2="2.5" y2="+0.2" stroke="#0F1035" stroke-width="0.03" />
+    <line x1="1.95" y1="+0.2" x2="1.95" y2="+0.6" stroke="#0F1035" stroke-width="0.03" />
+
+    <!-- Downsampling -->
+    <rect x="0.20" y="-0.80" width="0.05" height="0.25" fill="#365486"/>
+    <rect x="0.30" y="-0.80" width="0.05" height="0.25" fill="#365486"/>
+
+    <rect x="0.30" y="-0.35" width="0.05" height="0.25" fill="#7FC7D9"/>
+    <rect x="0.40" y="-0.35" width="0.10" height="0.25" fill="#365486"/>
+    <rect x="0.55" y="-0.35" width="0.10" height="0.25" fill="#365486"/>
+
+    <rect x="0.55" y="+0.10" width="0.10" height="0.25" fill="#7FC7D9"/>
+    <rect x="0.70" y="+0.10" width="0.20" height="0.25" fill="#365486"/>
+    <rect x="0.95" y="+0.10" width="0.20" height="0.25" fill="#365486"/>
+
+    <!-- Bottleneck -->
+    <rect x="0.95" y="+0.55" width="0.20" height="0.25" fill="#7FC7D9"/>
+    <rect x="1.20" y="+0.55" width="0.40" height="0.25" fill="#365486"/>
+    <rect x="1.65" y="+0.55" width="0.40" height="0.25" fill="#365486"/>
+
+    <!-- Upsampling -->
+    <rect x="1.65" y="+0.10" width="0.20" height="0.25" fill="#DCF2F1"/>
+    <rect x="1.85" y="+0.10" width="0.20" height="0.25" fill="#7FC7D9"/>
+    <rect x="2.10" y="+0.10" width="0.20" height="0.25" fill="#365486"/>
+    <rect x="2.35" y="+0.10" width="0.20" height="0.25" fill="#365486"/>
+
+    <rect x="2.35" y="-0.35" width="0.10" height="0.25" fill="#DCF2F1"/>
+    <rect x="2.45" y="-0.35" width="0.10" height="0.25" fill="#7FC7D9"/>
+    <rect x="2.60" y="-0.35" width="0.10" height="0.25" fill="#365486"/>
+    <rect x="2.75" y="-0.35" width="0.10" height="0.25" fill="#365486"/>
+
+    <rect x="2.75" y="-0.80" width="0.05" height="0.25" fill="#DCF2F1"/>
+    <rect x="2.80" y="-0.80" width="0.05" height="0.25" fill="#7FC7D9"/>
+    <rect x="2.90" y="-0.80" width="0.05" height="0.25" fill="#365486"/>
+    <rect x="3.00" y="-0.80" width="0.05" height="0.25" fill="#365486"/>
+
+    <!-- Outline -->
+    <rect x="0.05" y="-0.95" width="3.15" height="1.9" stroke="#0F1035" stroke-width="0.03" fill="none" rx="0.05"/>
+  </symbol>
+
+  <!-- Original Image -->
+  <g transform="translate(-126 -20)">
+  <text x="0" y="0" class="textMicro">
+    <tspan x="0" dy="1.2em">1x240x240x240</tspan>
+    <tspan x="8" dy="1.2em">0.8mm</tspan>
+  </text>
+  </g>
+  <use href="#image" x="-120" y="-10" />
+  <!-- Resample Image Coarse -->
+  <use href="#resample" x="-100" y="-5" />
+  <!-- Coarse Image -->
+  <g transform="translate(-88 -20)">
+  <text x="0" y="0" class="textMicro">
+    <tspan x="0" dy="1.2em">1x64x64x64</tspan>
+    <tspan x="4" dy="1.2em">3.0mm</tspan>
+  </text>
+  </g>
+  <use href="#image" x="-86" y="-10" />
+  <!-- Coarse Backbone -->
+  <g transform="translate(-61.0 -22)">
+  <text x="0" y="0" class="textMicro">
+    Coarse Segmentation Module
+  </text>
+  </g>
+  <use href="#backbone" x="-74" y="-20" />
+  <!-- Coarse Segmentation -->
+  <g transform="translate(-1.0 -20)">
+  <text x="0" y="0" class="textMicro">
+    <tspan x="0" dy="1.2em">4x64x64x64</tspan>
+    <tspan x="4" dy="1.2em">3.0mm</tspan>
+  </text>
+  </g>
+  <use href="#segCoarse" x="1" y="-10" />
+  <!-- Coarse Segmentation Loss -->
+  <g transform="translate(7 18)">
+  <text x="0" y="0" class="textMicro">Lc</text>
+  </g>
+  <path
+    id='arrow-line'
+    marker-end='url(#head)'
+    stroke-width='0.5'
+    fill='none' stroke='black'  
+    d='M9,8, 9 13'
+  />
+
+  <!-- Quaternion -->
+  <use href="#quaternion" x="-25" y="23" />
+  <!-- Quaternion Loss -->
+  <g transform="translate(-37 29)">
+  <text x="0" y="0" class="textMicro">Lq</text>
+  </g>
+
+  <path
+    id='arrow-line'
+    marker-end='url(#head)'
+    stroke-width='0.5'
+    fill='none' stroke='black'  
+    d='M-26,28, -30 28'
+  />
+
+  <!-- Resample Features -->
+  <use href="#resample" x="20" y="-5" transform="rotate(36, 25, 0)" />
+  <!-- Resample Image Fine -->
+  <use href="#resample" x="20" y="+32" transform="rotate(36, 25, 37)"/>
+  <!-- Coarse Segmentation Resampled -->
+  <g transform="translate(29.0 -20)">
+  <text x="0" y="0" class="textMicro">
+    <tspan x="0" dy="1.2em">4x128x128x92</tspan>
+    <tspan x="7" dy="1.2em">0.8mm</tspan>
+  </text>
+  </g>
+  <use href="#segCoarse" x="34" y="-10" transform="rotate(36, 42, 0)" />
+  <!-- Input Image Resampled -->
+  <use href="#image" x="34" y="28" transform="rotate(36, 44, 38)" />
+  <!-- Concatenate -->
+  <use href="#cat" x="54" y="-5" visibility="visible" />
+  <!-- Fine Input -->
+  <g transform="translate(29.0 17)">
+  <text x="0" y="0" class="textMicro">
+    <tspan x="0" dy="1.2em">1x128x128x92</tspan>
+    <tspan x="7" dy="1.2em">0.8mm</tspan>
+  </text>
+  </g>
+  <g transform="translate(65.0 -20)">
+  <text x="0" y="0" class="textMicro">
+    <tspan x="0" dy="1.2em">5x128x128x92</tspan>
+    <tspan x="6" dy="1.2em">0.8mm</tspan>
+  </text>
+  </g>
+  <use href="#segCoarse" x="70" y="-10" transform="rotate(36, 78, 0)" />
+  <!-- Fine Backbone -->
+  <g transform="translate(101.0 -22)">
+  <text x="0" y="0" class="textMicro">
+    Fine Segmentation Module
+  </text>
+  </g>
+  <use href="#backbone" x="85" y="-20" />
+
+  <!-- Fine Segmentation -->
+  <g transform="translate(159.0 -20)">
+  <text x="0" y="0" class="textMicro">
+    <tspan x="0" dy="1.2em">4x128x128x92</tspan>
+    <tspan x="6" dy="1.2em">0.8mm</tspan>
+  </text>
+  </g>
+  <use href="#segCoarse" x="165" y="-10" transform="rotate(36, 173, 0)" />
+  <!-- Fine Segmentation Loss -->
+  <g transform="translate(170 18)">
+  <text x="0" y="0" class="textMicro">Lf</text>
+  </g>
+  <path
+    id='arrow-line'
+    marker-end='url(#head)'
+    stroke-width='0.5'
+    fill='none' stroke='black'  
+    d='M172,9, 172 13'
+  />
+
+
+  <!-- Connections -->
+
+  <!-- Input => Resampler -->
+  <line x1="-105" y1="0.0" x2="-99.5" y2="0.0" stroke="#0F1035" stroke-width="0.5" />
+  <!-- Resampler => Coarse Image -->
+  <line x1="-90.5" y1="0.0" x2="-80.0" y2="0.0" stroke="#0F1035" stroke-width="0.5" />
+  <!-- Coarse Image => Coarse Backbone -->
+  <line x1="-70.5" y1="0.0" x2="-65.5" y2="0.0" stroke="#0F1035" stroke-width="0.5" />
+  <!-- Coarse Backbone => Coarse Segmentation -->
+  <line x1="-2.5" y1="0.0" x2="2.43" y2="0.0" stroke="#0F1035" stroke-width="0.5" />
+  <!-- Coarse Backbone => Quaternion -->
+  <line x1="-25.75" y1="13.5" x2="-20" y2="13.5" stroke="#0F1035" stroke-width="0.5" />
+  <line x1="-20.0" y1="13.25" x2="-20" y2="23.5" stroke="#0F1035" stroke-width="0.5" />
+  <!-- Quaternion => Resamplers -->
+  <line x1="-15.5" y1="28.0" x2="+25" y2="28.0" stroke="#0F1035" stroke-width="0.5" stroke-dasharray="1"/>
+  <line x1="+25.0" y1="28.0" x2="+25.0" y2="32.5" stroke="#0F1035" stroke-width="0.5" stroke-dasharray="1"/>
+  <line x1="+25.0" y1="28.0" x2="+25.0" y2="5.0" stroke="#0F1035" stroke-width="0.5" stroke-dasharray="1"/>
+  <!-- Coarse Segmentation => Seg Fine Resampler -->
+  <line x1="16.0" y1="0.0" x2="20.25" y2="0.0" stroke="red" stroke-width="0.5" visibility="visible" />
+  <!-- Input => Fine Resampler -->
+  <line x1="-112" y1="5" x2="-112" y2="37" stroke="#0F1035" stroke-width="0.5" />
+  <line x1="-112" y1="37" x2="20.5" y2="37" stroke="#0F1035" stroke-width="0.5" />
+  <!-- Seg Fine Resampler => Resampled Seg -->
+  <line x1="29.75" y1="0.0" x2="34.25" y2="0.0" stroke="red" stroke-width="0.5" visibility="visible" />
+  <!-- Input Fine Resampler => Input Fine Resampled -->
+  <line x1="29.5" y1="+37" x2="34.5" y2="+37" stroke="#0F1035" stroke-width="0.5" />
+  <!-- Input Fine Resampler => Cat -->
+  <line x1="51.5" y1="+37" x2="59.25" y2="+37" stroke="#0F1035" stroke-width="0.5" />
+  <line x1="59" y1="+37" x2="59" y2="0.0" stroke="#0F1035" stroke-width="0.5" />
+
+  <!-- Resampled Seg => Cat -->
+  <line x1="51.0" y1="0" x2="70.0" y2="0" stroke="#0F1035" stroke-width="0.5" />
+  <!-- Fine Input => Fine Backbone -->
+  <line x1="87.0" y1="0" x2="93.5" y2="0" stroke="#0F1035" stroke-width="0.5" />
+  <!-- Fine Backbone => Fine Seg -->
+  <line x1="156.5" y1="0" x2="166.0" y2="0" stroke="#0F1035" stroke-width="0.5" />
+
+
+  <!-- Legend -->
+  <rect x="-53" y="48" width="147" height="25" stroke="#0F1035" stroke-width="0.5" fill="none" rx="1.0" />
+  <use href="#image" x="-48" y="45" width="15" />
+  <text x="-50" y="70" class="textSmall">Image</text>
+  <use href="#segCoarse" x="-13" y="45" width="15" />
+  <text x="-24" y="70" class="textSmall">Segmentation</text>
+  <use href="#resample" x="30" y="51" width="8" />
+  <text x="21" y="70" class="textSmall">Resample</text>
+  <use href="#cat" x="70" y="51" width="8" />
+  <text x="58" y="70" class="textSmall">Concatenate</text>
+</svg>
